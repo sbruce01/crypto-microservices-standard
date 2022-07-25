@@ -1,0 +1,6 @@
+Error: No such container: crypto_sggw_1
+'2022.07.25T17:06:09.435 os
+  [3]  \docker port crypto_sggw_1
+       ^
+  [2]  /mnt/c/Users/sbruce1/Desktop/Work/Projects/Crypto/gateway.q:1: gw:hopen "J"$last ":" vs first system"docker port crypto_sggw_1"
+                                                                                                     ^
