@@ -1,0 +1,128 @@
+#
+# Optional: Create volumes to include licence/configuration in the containers.
+#
+x-vols: &vols
+  volumes:
+  - ${kx_licence_dir}:/opt/kx/lic
+  - ${cfg_dir}:/opt/kx/cfg
+  - ${mnt_dir}:${mnt_dir}
+  - ${tp_dir}:${tp_dir}
+  - ${custom_dir}:/opt/kx/custom # Optional mount for loading custom code
+
+#
+# Optional: Create a network for processes to communicate.
+#
+x-kxnet: &kxnet
+  networks:
+  - kx
+
+networks:
+  kx:
+    name: kx
+    driver: bridge
+
+#
+# Services.
+#
+services:
+
+  #
+  # Realtime Database
+  #
+  rdb:
+    image: ${da}
+    command: -p ${RDB_COMMAND}
+    environment:
+      - KXI_NAME=rdb
+      - KXI_SC=RDB
+      - KXI_LOG_FORMAT=text # Optional
+      - KXI_LOG_LEVELS=default:debug # Optional
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KXI_RT_LIB=/opt/kx/cfg/rt_tick_client_lib.q
+      - KXI_CUSTOM_FILE=/opt/kx/custom/custom.q # Optional
+      - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
+      - RT_SOURCE=dataStream
+      # - RT_SOURCE=order
+
+    ports:
+      - ${RDB_PORTS}
+    deploy:
+      mode: replicated
+      replicas: 1  #2
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Optional: RDB sidecar. Only required if using discovery, otherwise, may be omitted.
+  #
+#  rdb_sidecar:
+#    image: ${sidecar}
+#    environment:
+#      - KXI_CONFIG_FILE=/opt/kx/cfg/${rdb_sidecar_config_json}
+#      - KXI_LOG_LEVELS=default:debug # Optional
+#   <<: *vols # Optional
+#    <<: *kxnet # Optional
+
+  #
+  # Intraday Database
+  #
+  idb:
+    image: ${da}
+    command: -p ${IDB_COMMAND}
+    environment:
+      - KXI_NAME=idb
+      - KXI_SC=IDB
+      - KXI_LOG_FORMAT=text # Optional
+      - KXI_LOG_LEVELS=default:trace # Optional
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
+      - KXI_CUSTOM_FILE=/opt/kx/custom/custom.q # Optional
+    ports:
+      - ${IDB_PORTS}
+    deploy:
+      mode: replicated
+      replicas: 1 #2
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Historical Database
+  #
+  hdb:
+    image: ${da}
+    command: -p ${HDB_COMMAND}
+    environment:
+      - KXI_NAME=hdb
+      - KXI_SC=HDB
+      - KXI_LOG_FORMAT=text # Optional
+      - KXI_LOG_LEVELS=default:trace # Optional
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
+      - KXI_CUSTOM_FILE=/opt/kx/custom/custom.q # Optional
+    ports:
+      - ${HDB_PORTS}
+    deploy:
+      mode: replicated
+      replicas: 1 #2
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Optional: Eureka Service Discovery Registry. Only required if using discovery, otherwise, may be omitted.
+  #
+  #eureka:
+  #  image: ${eureka}
+  #  ports:
+  #  - 9000:8761
+
+  #
+  # Optional: Discovery proxy. Only required if using discovery, otherwise, may be omitted.
+  #
+  #proxy:
+  #  image: ${proxy}
+  #  ports:
+  #    - 4000:4000
+  #  environment:
+  #    - KXI_CONFIG_FILE=/opt/app/cfg/${proxy_config_json}
+  #  command: -p 4000
+

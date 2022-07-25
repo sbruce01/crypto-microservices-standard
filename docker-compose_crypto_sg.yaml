@@ -1,0 +1,129 @@
+#
+# Optional: Create volumes to include licence/configuration in the containers.
+#
+x-vols: &vols
+  volumes:
+  - ${kx_licence_dir}:/opt/kx/lic
+  - ${cfg_dir}:/opt/kx/cfg
+  - ${custom_dir}:/opt/kx/custom # Optional mount for loading custom code
+
+#
+# Optional: Create a network for processes to communicate.
+#
+x-kxnet: &kxnet
+  networks:
+  - kx
+
+networks:
+  kx:
+    name: kx
+    driver: bridge
+
+#
+# Services.
+#
+services:
+  #
+  # Resource Coordinator -- 1 per assembly.
+  #
+  sgrc:
+    image: ${sg_rc}
+    environment:
+      - KXI_NAME=sg_rc
+      - KXI_PORT=${KXI_PORT_SGRC}
+      - KXI_LOG_FORMAT=text # Optional
+      - KXI_LOG_LEVELS=default:debug # Optional
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+    ports:
+      - ${SGRC_PORTS}
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Optional: Resource Coordinator sidecar. Only required if using discovery, otherwise, may be omitted.
+  #
+  #rcsidecar:
+  #  image: ${sidecar}
+  #  environment:
+  #    - KXI_CONFIG_FILE=/opt/kx/cfg/${rc_sidecar_config_json}
+  #    - KXI_LOG_FORMAT=text # Optional
+  #    - KXI_LOG_LEVELS=default:debug # Optional
+  #    - KDB_LICENSE_B64=$KDB_LICENSE_B64
+  #  <<: *vols # Optional
+  #  <<: *kxnet # Optional
+
+  #
+  # Aggregator. Note we only have one here, but multiple can be configured.
+  #
+  sgagg:
+    image: ${sg_agg}
+    environment:
+      - KXI_NAME=sg_agg
+      - KXI_PORT=${KXI_PORT_SGAGG}
+      - KXI_LOG_FORMAT=text # Optional
+      - KXI_LOG_LEVELS=default:debug # Optional
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KXI_CUSTOM_FILE=/opt/kx/custom/custom_agg_code.q # Optional
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+      - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
+    ports:
+      - ${SGAGG_PORTS}
+    # Optional: deploy multiple replicas.
+    deploy:
+      mode: replicated
+      replicas: 1 #3
+      resources:
+        limits:
+          cpus: 0.50
+         # memory: 50Gi    
+        reservations:
+          cpus: 0.25 
+         # memory: 20Gi
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Gateway.
+  #
+  sggw:
+    image: ${sg_gw}
+    environment:
+#      - DISCOVERY_PROXY=http://proxy:4000 # Optional, only if using discovery
+      - KXI_ASSEMBLY_FILE=/opt/kx/cfg/${assembly_file_yaml}
+      - KXI_AUTH_DISABLED=${KXI_AUTH_DISABLED}
+      - GATEWAY_QIPC_PORT=${GATEWAY_QIPC_PORT}
+      - GATEWAY_HTTP_PORT=${GATEWAY_HTTP_PORT}
+      - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
+    ports:
+            #      - ${SG_IP}::${GATEWATY_QIPC_PORT}
+            #- ${SG_IP}::${GATEWAY_HTTP_PORT}
+      - ${SGGW_PORTS_QIPC}
+      - ${SGGW_PORTS_HTTP}
+    # Optional: deploy multiple replicas.
+    deploy:
+      mode: replicated
+      replicas: 1 #5
+    <<: *vols # Optional
+    <<: *kxnet # Optional
+
+  #
+  # Optional: Eureka Service Discovery Registry. Only required if using discovery, otherwise, may be omitted.
+  #
+  #eureka:
+  #  image: ${eureka}
+  #  ports:
+  #    - 9000:8761
+
+  #
+  # Optional: Discovery proxy. Only required if using discovery, otherwise, may be omitted.
+  #
+  #proxy:
+  #  image: ${proxy}
+  #  ports:
+  #    - 4000:4000
+  #  environment:
+  #    - KXI_CONFIG_FILE=/opt/kx/cfg/${proxy_config_json}
+  #    - KDB_LICENSE_B64=$KDB_LICENSE_B64
+  #  command: -p 4000
+

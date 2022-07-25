@@ -1,0 +1,108 @@
+x-kxnet: &kxnet
+  networks:
+  - kx
+
+networks:
+  kx:
+    name: kx
+    driver: bridge
+
+services:
+  sm:
+    image: ${sm}
+    environment:
+      - KXI_NAME=sm
+      - KXI_SC=SM
+      - KXI_ASSEMBLY_FILE=/cfg/resolved_assembly_sample.yaml
+      - KXI_RT_LIB=/cfg/rt_tick_client_lib.q
+      - KXI_PORT=${KXI_PORT_SM}
+      - KXI_LOG_FORMAT=text
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+    ports:
+      - ${SM_PORTS}
+    volumes:
+      - ${mnt_dir}:${mnt_dir}
+      - ${tp_dir}:${tp_dir}
+      - ./cfg:/cfg
+      - ~/.qp.licenses:/opt/kx/lic
+        #networks:
+        #- kx
+    stdin_open: true
+    tty: false
+    <<: *kxnet # Optional
+
+  eoi:
+    image: ${eoi}
+    environment:
+      - KXI_NAME=eoi
+      - KXI_SC=EOI
+      - KXI_ASSEMBLY_FILE=/cfg/resolved_assembly_sample.yaml
+      - KXI_RT_LIB=/cfg/rt_tick_client_lib.q
+        #- KXI_RT_NODES={host_ip}:5010
+      - KXI_PORT=${KXI_PORT_EOI}
+      - KXI_LOG_FORMAT=text
+      - KXI_SM_SMADDR=${KXI_SM_SMADDR}
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+    ports:
+      - ${EOI_PORTS}
+    volumes:
+      - ${mnt_dir}:${mnt_dir}
+      - ${tp_dir}:${tp_dir}
+      - ./cfg:/cfg
+      - ~/.qp.licenses:/opt/kx/lic
+        #networks:
+        #- kx
+    stdin_open: true
+    tty: false
+    <<: *kxnet # Optional
+
+  eod:
+    image: ${eod}
+    environment:
+      - KXI_NAME=eod
+      - KXI_SC=EOD
+      - KXI_ASSEMBLY_FILE=/cfg/resolved_assembly_sample.yaml
+      - KXI_RT_LIB=/cfg/rt_tick_client_lib.q
+      - KXI_PORT=${KXI_PORT_EOD}
+      - KXI_LOG_FORMAT=text
+      - KXI_SM_SMADDR=${KXI_SM_SMADDR}
+      - KXI_SM_EOIADDR=${KXI_SM_EOIADDR}
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+    ports:
+      - ${EOD_PORTS}
+    volumes:
+      - ${mnt_dir}:${mnt_dir}
+      - ${tp_dir}:${tp_dir}
+      - ./cfg:/cfg
+      - ~/.qp.licenses:/opt/kx/lic
+        # networks:
+        #- kx
+    stdin_open: true
+    tty: false
+    <<: *kxnet # Optional
+
+  dbm:
+    image: ${dbm}
+    environment:
+      - KXI_NAME=dbm
+      - KXI_SC=DBM
+      - KXI_ASSEMBLY_FILE=/cfg/resolved_assembly_sample.yaml
+      - KXI_RT_LIB=/cfg/rt_tick_client_lib.q
+      - KXI_PORT=${KXI_PORT_DBM}
+      - KXI_LOG_FORMAT=text
+      - KXI_SM_SMADDR=${KXI_SM_SMADDR}
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+    ports:
+      - ${DBM_PORTS}
+    volumes:
+      - ${mnt_dir}:${mnt_dir}
+      - ${tp_dir}:${tp_dir}
+      - ./cfg:/cfg
+      - ~/.qp.licenses:/opt/kx/lic
+    #networks:
+      # - kx
+    stdin_open: true
+    tty: false
+    <<: *kxnet # Optional
+
+

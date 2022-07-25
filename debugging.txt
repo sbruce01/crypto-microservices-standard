@@ -1,0 +1,3 @@
+SM RT not ready, role=pub args=[t="dataStream"] retries=483 delay=1000ms
+
+2022-07-25 02:05:02.475 [sm] ERROR SM Error registering client. Expected state: ACTIVE actual: INITIALIZING
