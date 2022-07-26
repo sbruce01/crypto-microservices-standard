@@ -1,18 +1,14 @@
-"Connecting the bitfinex book websocket at 2022.07.25T07:06:05.391"
-"bitfinex book websocket is connected at 2022.07.25T07:06:06.532"
-"Connecting the bitfinex trades websocket at 2022.07.25T07:06:06.533"
-"bitfinex trades websocket is connected at 2022.07.25T07:06:07.455"
-"Connecting the bitmex orderBookL2_25:XBTUSD websocket at 2022.07.25T07:06:07..
-"bitmex orderBookL2_25:XBTUSD websocket is connected at 2022.07.25T07:06:08.6..
-"Connecting the bitmex orderBookL2_25:ETHUSD websocket at 2022.07.25T07:06:08..
-"bitmex orderBookL2_25:ETHUSD websocket is connected at 2022.07.25T07:06:09.5..
-"Connecting the bitmex trade:ETHUSD websocket at 2022.07.25T07:06:09.581"
-"bitmex trade:ETHUSD websocket is connected at 2022.07.25T07:06:10.409"
-"Connecting the bitmex trade:XBTUSD websocket at 2022.07.25T07:06:10.410"
-"bitmex trade:XBTUSD websocket is connected at 2022.07.25T07:06:11.317"
-"Checking the websocket connection status"
-"Websocket connections are all secure"
-"Checking the websocket connection status"
-"Websocket connections are all secure"
+"Connecting the bitfinex book websocket at 2022.07.26T06:10:20.156"
+"bitfinex book websocket is connected at 2022.07.26T06:10:20.987"
+"Connecting the bitfinex trades websocket at 2022.07.26T06:10:20.987"
+"bitfinex trades websocket is connected at 2022.07.26T06:10:21.784"
+"Connecting the bitmex orderBookL2_25:XBTUSD websocket at 2022.07.26T06:10:21..
+"bitmex orderBookL2_25:XBTUSD websocket is connected at 2022.07.26T06:10:23.4..
+"Connecting the bitmex orderBookL2_25:ETHUSD websocket at 2022.07.26T06:10:23..
+"bitmex orderBookL2_25:ETHUSD websocket is connected at 2022.07.26T06:10:24.2..
+"Connecting the bitmex trade:ETHUSD websocket at 2022.07.26T06:10:24.237"
+"bitmex trade:ETHUSD websocket is connected at 2022.07.26T06:10:25.127"
+"Connecting the bitmex trade:XBTUSD websocket at 2022.07.26T06:10:25.127"
+"bitmex trade:XBTUSD websocket is connected at 2022.07.26T06:10:25.940"
 "Checking the websocket connection status"
 "Websocket connections are all secure"

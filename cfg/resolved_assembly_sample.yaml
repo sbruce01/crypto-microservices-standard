@@ -117,11 +117,11 @@ tables:
 bus:
   messages:
     protocol: custom
-    nodes: 127.0.1.1:5010
+    nodes: localhost:5010
     topic: dataStream
   stream:
     protocol: custom
-    nodes: 127.0.1.1:5010
+    nodes: localhost:5010
     #topic: dataStream
 
 # Database mount configuration
