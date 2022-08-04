@@ -43,15 +43,15 @@ export proxy_config_json=proxy.q
 #export cfg_dir="./cfg"
 #export custom_dir="./custom"
 # Sam's Local setup
-export cfg_dir="/home/sbruce1/Work_Projects/Crypto/cfg"
-export custom_dir="/home/sbruce1/Work_Projects/Crypto/custom"
+export cfg_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/cfg"
+export custom_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/custom"
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 
 #export mnt_dir="/data/db"
 
 # Sam's Local Setup
-export mnt_dir="/home/sbruce1/Work_Projects/Crypto/data/db"
+export mnt_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db"
 ###############
 
 
