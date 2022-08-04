@@ -44,39 +44,6 @@ tables:
           description: exchange
           type: symbol
 
-  book:
-      description: Book
-      type: partitioned
-      blockSize: 1000
-      prtnCol: time
-      sortColsOrd: sym
-      sortColsDisk: sym
-      columns:
-        - name: time
-          description: Partitioned timestamp column
-          type: timestamp
-        - name: sym
-          description: sym
-          type: symbol
-          attrMem: grouped
-          attrDisk: parted
-          attrOrd: parted
-        - name: exchange
-          description: exchange
-          type: symbol
-        - name: bids
-          description: bids
-          type:  
-        - name: bidsizes
-          description: bidsizes
-          type: 
-        - name: asks
-          description: asks
-          type: 
-        - name: asksizes
-          description: asksizes
-          type: 
-
   trade:
       description: Trade
       type: partitioned
@@ -117,12 +84,12 @@ tables:
 bus:
   messages:
     protocol: custom
-    nodes: localhost:5010
+    nodes: 172.31.40.24:5010
     topic: dataStream
   stream:
     protocol: custom
-    nodes: localhost:5010
-    #topic: dataStream
+    nodes: 172.31.40.24:5010
+    topic: dataStream
 
 # Database mount configuration
 mounts:
@@ -132,11 +99,11 @@ mounts:
     partition: none
   idb:
     type: local
-    baseURI: file:///home/sbruce1/Work_Projects/Crypto/data/db/idb
+    baseURI: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/idb
     partition: ordinal
   hdb:
     type: local
-    baseURI: file:///home/sbruce1/Work_Projects/Crypto/data/db/hdb
+    baseURI: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdb
     partition: date
 
 # Service configuration
@@ -144,7 +111,7 @@ elements:
   # SM configuration (also used by EOI, EOD, and DBM)
   sm:
     description: Storage manager
-    source: messages
+    source: stream
     # Tier configuration
     tiers:
       - name: rdb
@@ -163,14 +130,14 @@ elements:
           rows: 200000
       - name: hdb2
         mount: hdb
-        store: file:///home/sbruce1/Work_Projects/Crypto/data/db/hdbtier2
+        store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier2
         retain:
           time: 5 weeks
           size: 2 TB
           rows: 10000000
       - name: hdb3
         mount: hdb
-        store: file:///home/sbruce1/Work_Projects/Crypto/data/db/hdbtier3
+        store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier3
         retain:
           time: 3 months
           size: 1 PB

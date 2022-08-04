@@ -89,7 +89,7 @@ bus:
   stream:
     protocol: custom
     nodes: ${host_ip}:${NODES_PORT}
-    #topic: dataStream
+    topic: dataStream
 
 # Database mount configuration
 mounts:
@@ -111,7 +111,7 @@ elements:
   # SM configuration (also used by EOI, EOD, and DBM)
   sm:
     description: Storage manager
-    source: messages
+    source: stream
     # Tier configuration
     tiers:
       - name: rdb
