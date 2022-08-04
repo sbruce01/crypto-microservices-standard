@@ -45,6 +45,8 @@ export proxy_config_json=proxy.q
 # Sam's Local setup
 export cfg_dir="/home/sbruce1/Work_Projects/Crypto/cfg"
 export custom_dir="/home/sbruce1/Work_Projects/Crypto/custom"
+
+
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 
@@ -57,7 +59,7 @@ export mnt_dir="/home/sbruce1/Work_Projects/Crypto/data/db"
 
 # export host_ip=`hostname -i`
 # export host_ip=149.167.62.10 
-export host_ip="localhost"
+export host_ip=127.0.0.1
 
 export KXI_AUTH_DISABLED=1
 
