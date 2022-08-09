@@ -75,10 +75,10 @@ services:
       replicas: 1 #3
       resources:
         limits:
-          cpus: 0.50
+          cpus: "0.50"
          # memory: 50Gi    
         reservations:
-          cpus: 0.25 
+          cpus: "0.25" 
          # memory: 20Gi
     <<: *vols # Optional
     <<: *kxnet # Optional

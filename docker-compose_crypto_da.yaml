@@ -42,7 +42,6 @@ services:
       - KXI_CUSTOM_FILE=/opt/kx/custom/custom.q # Optional
       - KXI_SG_RC_ADDR=${KXI_SG_RC_ADDR}
       - RT_SOURCE=dataStream
-      # - RT_SOURCE=order
 
     ports:
       - ${RDB_PORTS}
