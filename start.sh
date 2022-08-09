@@ -78,3 +78,7 @@ ps aux | grep $1
 cd ../
 
 q gateway.q -p 40002 -u 1 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
+
+cd dash
+q sample/demo.q -u 1 &
+q dash.q -p 10001 -u 1 &
