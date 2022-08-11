@@ -45,3 +45,6 @@ trade_summary:{[startTS;endTS]
     .sapi.metaReturn[`type`description!(98h;"Count by specified columns.")],
     .sapi.metaMisc[enlist[`safe]!enlist 1b]
     ]
+
+// Just works
+.da.i.eorReceived:1b

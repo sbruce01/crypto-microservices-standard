@@ -36,6 +36,8 @@ kill -9 $(ps -ef | grep 'feedhandler' | grep -v grep |  awk '{print $2}')
 
 ps -ef | grep $1 | grep -v grep | grep -v stop.sh 
 kill -9 $(ps -ef | grep $1 | grep -v grep | grep -v stop |  awk '{print $2}')
+ps aux | grep ' sample/demo.q'| grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}
+ps aux | grep ' dash.q' | grep '10010'| grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}
 ps aux | grep ' gateway.q' | grep '40002'| grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}
 echo -e 'Running processes ('$1'): \n'
 

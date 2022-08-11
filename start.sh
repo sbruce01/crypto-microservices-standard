@@ -42,6 +42,9 @@ echo -e 'Check for running qce procs and kill\n'
 kill -9 $(ps -ef | grep $1'/kdb-tick' | grep -v grep |  awk '{print $2}')
 
 echo -e 'Starting TP on port '${NODES_PORT}'...\n'
+
+
+
 #Navigate into kdb-tick directory to start the TP
 cd ./kdb-tick/
 q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
@@ -67,7 +70,11 @@ PATH="/home/sbruce1/anaconda3/bin:/home/sbruce1/bin:/home/sbruce1/anaconda3/bin:
 #####
 q feedhandler_microservicesBitmexBitfinex.q -p 6001 -env $1 > ${LOG_DIRECTORY}/feedhandler_microservices.log 2>&1 &
 ## Start the CTP GW for processes to query and subscribe to
-q ctp_gw.q crypto localhost:5010 -p 6005 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
+q ctp_gw.q -p 5555 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
+
+cd tick
+q wschaintick_0.2.2.q localhost:5010 -p 5110 -t 1000 > ${LOG_DIRECTORY}/wschaintick.log 2>&1 &
+cd ../
 
 sleep 3
 
@@ -77,4 +84,10 @@ ps aux | grep $1
 
 cd ../
 
-q gateway.q -p 40002 -u 1 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
+q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
+
+# Starting Dashboards
+cd dash
+q sample/demo.q -u 1 &
+q dash.q -p 10010 -u 1 &
+cd ../

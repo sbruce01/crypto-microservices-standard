@@ -1,0 +1,322 @@
+{
+  "id": "d6c1e56e-9de6-92aa-d8a7-d9135db94025",
+  "name": "Crypto Streaming CTP GW",
+  "creationDate": "Thu, 11 Aug 2022 02:24:34 GMT",
+  "lastUpdateDate": "Thu, 11 Aug 2022 02:28:19 GMT",
+  "thumb": null,
+  "screenDetails": [
+    {
+      "label": "Screen 1",
+      "value": "2793c38d-827d-757f-28a7-514169d6b836"
+    }
+  ],
+  "screens": [
+    {
+      "id": "2793c38d-827d-757f-28a7-514169d6b836",
+      "name": "Screen 1",
+      "thumb": null,
+      "widgets": [
+        {
+          "id": "7e7d6d92-42da-0317-e656-139c571df869",
+          "layout": {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 24,
+            "colSpan": 36
+          },
+          "component": {
+            "id": "e11d5aff-eb68-4d4d-4f79-66998763471b",
+            "key": "Datagrid",
+            "options": {
+              "version": "4.7.3",
+              "datagridPossibleColumns": [
+                "time",
+                "sym",
+                "orderID",
+                "side",
+                "price",
+                "size",
+                "action",
+                "orderType",
+                "exchange"
+              ],
+              "datagridPossibleHeaderColumns": [
+                "none"
+              ],
+              "datagridPossibleColumnsWithItself": [
+                "<this>",
+                "time",
+                "sym",
+                "orderID",
+                "side",
+                "price",
+                "size",
+                "action",
+                "orderType",
+                "exchange"
+              ],
+              "selectedColumnPossibleValues": [
+                "time",
+                "sym",
+                "orderID",
+                "side",
+                "price",
+                "size",
+                "action",
+                "orderType",
+                "exchange"
+              ],
+              "highlightTargetPossibleValues": [
+                "time",
+                "sym",
+                "orderID",
+                "side",
+                "price",
+                "size",
+                "action",
+                "orderType",
+                "exchange",
+                "*"
+              ],
+              "sortingPossibleValues": [
+                "",
+                "time",
+                "sym",
+                "orderID",
+                "side",
+                "price",
+                "size",
+                "action",
+                "orderType",
+                "exchange"
+              ],
+              "Basics": {
+                "Data": {
+                  "_dashboardsType": "data",
+                  "value": "Streaming"
+                }
+              },
+              "ColumnsConfiguration": [
+                {
+                  "Field": "time",
+                  "DisplayName": "time",
+                  "Format": "DateTime",
+                  "TimeFormat": "HH:mm:ss.SSSSSSSSS",
+                  "WidthWeight": 200,
+                  "MinWidthAbsolute": 200,
+                  "TextAlign": "right"
+                },
+                {
+                  "Field": "sym",
+                  "DisplayName": "sym",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100,
+                  "TextAlign": "left"
+                },
+                {
+                  "Field": "orderID",
+                  "DisplayName": "orderID",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100
+                },
+                {
+                  "Field": "side",
+                  "DisplayName": "side",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100,
+                  "TextAlign": "left"
+                },
+                {
+                  "Field": "price",
+                  "DisplayName": "price",
+                  "Format": "Formatted Number",
+                  "Precision": 4,
+                  "WidthWeight": 140,
+                  "MinWidthAbsolute": 140,
+                  "TextAlign": "right"
+                },
+                {
+                  "Field": "size",
+                  "DisplayName": "size",
+                  "Format": "Formatted Number",
+                  "Precision": 4,
+                  "WidthWeight": 140,
+                  "MinWidthAbsolute": 140,
+                  "TextAlign": "right"
+                },
+                {
+                  "Field": "action",
+                  "DisplayName": "action",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100,
+                  "TextAlign": "left"
+                },
+                {
+                  "Field": "orderType",
+                  "DisplayName": "orderType",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100,
+                  "TextAlign": "left"
+                },
+                {
+                  "Field": "exchange",
+                  "DisplayName": "exchange",
+                  "WidthWeight": 100,
+                  "MinWidthAbsolute": 100,
+                  "TextAlign": "left"
+                }
+              ],
+              "Alignment": {
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "paddingBottom": 0,
+                "innerPaddingLeft": 0,
+                "innerPaddingRight": 0,
+                "innerPaddingTop": 0,
+                "innerPaddingBottom": 0,
+                "titlePaddingLeft": 0,
+                "titlePaddingRight": 0
+              },
+              "format": {
+                "tileBorderWidth": 0,
+                "tileBorderRounding": 0,
+                "tileBorderColor": "#000000",
+                "tileBackgroundColor": "#000000",
+                "tileTransparentBackground": true,
+                "tileShadow": false
+              }
+            },
+            "containerId": null,
+            "components": [],
+            "widgets": [],
+            "definitionId": "21",
+            "hasOnSettingsChange": true
+          }
+        }
+      ],
+      "relativeHeight": true,
+      "rowCount": 24,
+      "rowHeight": 25,
+      "colCount": 36,
+      "floatable": true,
+      "isDefault": true
+    }
+  ],
+  "popups": [],
+  "tags": [],
+  "dashboardTheme": "Dark",
+  "themeSwitchable": true,
+  "saveTimestamp": null,
+  "relativeHeight": true,
+  "rowCount": 24,
+  "rowHeight": 25,
+  "colCount": 36,
+  "floatable": true,
+  "viewState": {
+    "selected": {
+      "_viewType": true,
+      "_default": "0",
+      "_type": "symbol"
+    },
+    ".settings": {}
+  },
+  "data": {
+    "Streaming": {
+      "_autoExec": true,
+      "_autoExecute": true,
+      "_columns": [
+        "time",
+        "sym",
+        "orderID",
+        "side",
+        "price",
+        "size",
+        "action",
+        "orderType",
+        "exchange"
+      ],
+      "_dataType": "analytic",
+      "_dataSource": "kdb",
+      "_connection": "CTP_GW",
+      "_mappings": {
+        "key": "time",
+        "mappings": {},
+        "value": "sym"
+      },
+      "_maxRows": 2000,
+      "_subscriptionType": "streaming",
+      "_subscriptionInterval": 3,
+      "_layout": [
+        {
+          "isExpanded": true,
+          "weight": 2
+        },
+        {
+          "isExpanded": false,
+          "weight": 1
+        },
+        {
+          "isExpanded": false,
+          "weight": 1
+        },
+        {
+          "isExpanded": true,
+          "weight": 1
+        },
+        {
+          "isExpanded": true,
+          "weight": 2
+        }
+      ],
+      "_selectedAnalytic": "order",
+      "_analyticParams": [
+        {
+          "id": "x",
+          "name": "x",
+          "type": "symbol",
+          "description": "",
+          "required": false,
+          "value": "",
+          "isViewState": false
+        }
+      ],
+      "_analyticParameters": {},
+      "_streamingParameters": [
+        {
+          "id": "x",
+          "name": "x",
+          "type": "symbol",
+          "description": "",
+          "required": false,
+          "value": "",
+          "isViewState": false
+        }
+      ],
+      "_subscriptionKey": "",
+      "_isStreamingSubscription": false,
+      "_hasUpdateQuery": false,
+      "_updateQueryString": "",
+      "_updateType": "query"
+    }
+  },
+  "worksheetPadding": 10,
+  "widgetsSpacing": 0,
+  "borderColor": "000000",
+  "borderBackground": "000000",
+  "transparentBackground": true,
+  "borderWidth": 0,
+  "borderRounding": 0,
+  "borderSpacing": 0,
+  "borderShadow": false,
+  "saveViewerState": "enabled",
+  "hostnameAccess": "",
+  "enableShareDashboard": false,
+  "notifications": null,
+  "showLoadingIndicators": true,
+  "unsavedViewerPrompt": false,
+  "advancedCss": "",
+  "cssClasses": "",
+  "version": "4.7.3",
+  "wasChanged": true
+}
