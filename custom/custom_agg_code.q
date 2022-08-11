@@ -20,11 +20,11 @@
 //
 pjAgg:{[tbls]
     (pj/)tbls
-    }
+    };
 
 razeAgg:{[tbls]
 	raze tbls
-	}
+	};
 
 //
 // @desc Agg function that does an average daily count by sym.

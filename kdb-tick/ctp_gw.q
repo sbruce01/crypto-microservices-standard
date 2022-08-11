@@ -2,7 +2,7 @@
 system"l tick/sym.q"
 
 // open handle to gw
-gw:hopen "J"$last ":" vs first system"docker port crypto_sggw_1"
+gw:hopen "J"$last ":" vs first system"docker port crypto-sggw-1"
 
 // load in and define other tables to publish
 last_book:([]time:"p"$();sym:`$();side:`$();price:"f"$();size:"f"$());

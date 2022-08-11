@@ -42,6 +42,9 @@ echo -e 'Check for running qce procs and kill\n'
 kill -9 $(ps -ef | grep $1'/kdb-tick' | grep -v grep |  awk '{print $2}')
 
 echo -e 'Starting TP on port '${NODES_PORT}'...\n'
+
+
+
 #Navigate into kdb-tick directory to start the TP
 cd ./kdb-tick/
 q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
@@ -77,8 +80,10 @@ ps aux | grep $1
 
 cd ../
 
-q gateway.q -p 40002 -u 1 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
+q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
 
+# Starting Dashboards
 cd dash
 q sample/demo.q -u 1 &
-q dash.q -p 10001 -u 1 &
+q dash.q -p 10010 -u 1 &
+cd ../
