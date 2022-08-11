@@ -70,7 +70,11 @@ PATH="/home/sbruce1/anaconda3/bin:/home/sbruce1/bin:/home/sbruce1/anaconda3/bin:
 #####
 q feedhandler_microservicesBitmexBitfinex.q -p 6001 -env $1 > ${LOG_DIRECTORY}/feedhandler_microservices.log 2>&1 &
 ## Start the CTP GW for processes to query and subscribe to
-q ctp_gw.q crypto localhost:5010 -p 6005 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
+q ctp_gw.q -p 5555 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
+
+cd tick
+q wschaintick_0.2.2.q localhost:5010 -p 5110 -t 1000 > ${LOG_DIRECTORY}/wschaintick.log 2>&1 &
+cd ../
 
 sleep 3
 
