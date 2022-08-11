@@ -40,8 +40,8 @@ export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 
 export mnt_dir="/data/db"          # Edit
-
 export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`
+
 
 export KXI_AUTH_DISABLED=1
 
