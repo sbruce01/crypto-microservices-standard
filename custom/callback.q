@@ -13,7 +13,7 @@ stream: .qsp.read.fromCallback[`publish]
   / .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.u.upd;1b)]
 
 
-  [.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.test.set;1b)]
+  .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.test.set;1b)]
 
 
 ////////////////////////// END DEV //////////////////////////////////
