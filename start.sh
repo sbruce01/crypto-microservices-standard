@@ -47,7 +47,8 @@ echo -e 'Starting TP on port '${NODES_PORT}'...\n'
 
 #Navigate into kdb-tick directory to start the TP
 cd ./kdb-tick/
-q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
+# q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
+q tick.q $1 ${BASE_DIRECTORY}/kdb-tick/data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
 
 #Move back to directory with the docker-compose files
 cd ../

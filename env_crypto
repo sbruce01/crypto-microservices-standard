@@ -45,6 +45,7 @@ export proxy_config_json=proxy.q
 # Sam's Local setup
 export cfg_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/cfg"
 export custom_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/custom"
+export tp_log_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/kdb-tick/data/tplogs"
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 

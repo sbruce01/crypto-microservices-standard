@@ -84,11 +84,11 @@ tables:
 bus:
   messages:
     protocol: custom
-    nodes: 172.31.40.24:5010
+    nodes: 172.18.218.66:5010
     topic: dataStream
   stream:
     protocol: custom
-    nodes: 172.31.40.24:5010
+    nodes: 172.18.218.66:5010
     topic: dataStream
 
 # Database mount configuration
@@ -128,20 +128,20 @@ elements:
         retain:
           time: 2 days
           rows: 200000
-      - name: hdb2
-        mount: hdb
-        store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier2
-        retain:
-          time: 5 weeks
-          size: 2 TB
-          rows: 10000000
-      - name: hdb3
-        mount: hdb
-        store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier3
-        retain:
-          time: 3 months
-          size: 1 PB
-          rows: 20000000
+      # - name: hdb2
+      #   mount: hdb
+      #   store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier2
+      #   retain:
+      #     time: 5 weeks
+      #     size: 2 TB
+      #     rows: 10000000
+      # - name: hdb3
+      #   mount: hdb
+      #   store: file:///home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db/hdbtier3
+      #   retain:
+      #     time: 3 months
+      #     size: 1 PB
+      #     rows: 20000000
     disableDiscovery: true  # Disables registering with discovery
   dap:
     #rcName: sg_rc
