@@ -1,9 +1,15 @@
 
 export DOCKER_REG=registry.dl.kx.com
 
-export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic) # Edit
+#export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic)
+#export q=${DOCKER_REG}/kdb-4.0:2021.12.07
+#export kx_licence_dir=~/.qp.licenses
+
+## Sam's Local Setup
+
+export KDB_LICENSE_B64=$(base64 -w0 /home/sbruce1/lib/qce-20220615101214/kc.lic)
 export q=${DOCKER_REG}/kdb-4.0:2021.12.07
-export kx_licence_dir=~/.qp.licenses                   # Edit              
+export kx_licence_dir=/home/sbruce1/lib/qce-20220615101214
 
 #####################
 
@@ -34,14 +40,21 @@ export rc_sidecar_config_json=sidecar.json
 export rdb_sidecar_config_json=sidecar.json
 export custom_agg_code=custom
 export proxy_config_json=proxy.q
-export cfg_dir="./cfg"             # Edit
-export custom_dir="./custom"       # Edit
+#export cfg_dir="./cfg"             # Edit
+#export custom_dir="./custom"       # Edit
+# Sam's Local setup
+export cfg_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/cfg"
+export custom_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/custom"
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 
-export mnt_dir="/data/db"          # Edit
-export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`
+#export mnt_dir="/data/db"
 
+# Sam's Local Setup
+export mnt_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db"
+###############
+
+export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`
 
 export KXI_AUTH_DISABLED=1
 
@@ -52,6 +65,11 @@ export GATEWAY_HTTP_PORT=8080
 
 export KXI_PORT_SGAGG=5060
 export KXI_PORT_SGRC=5050
+
+export KXI_PORT_SPCTRL=5070
+export KXI_PORT_SPWRK=5071
+export KXI_PORT_SPCOORD=5072
+
 
 export KXI_PORT_SM=10001
 export KXI_PORT_EOI=10002
@@ -69,6 +87,9 @@ export SM_ENDPOINTS=sm:10001
 export GW_ENDPOINTS=rc:5050
 export RC_PORT=5050
 
+export SP_CTRL_PORTS=6000:6000
+export SP_WORK_PORTS=5000:5000
+
 export RDB_PORTS=5080-5084:5080
 export IDB_PORTS=5090-5094:5090
 export HDB_PORTS=5100-5104:5100
@@ -81,6 +102,9 @@ export SGRC_PORTS=127.0.0.1::5050
 export SGAGG_PORTS=127.0.0.1::5060
 export SGGW_PORTS_QIPC=127.0.0.1::5040
 export SGGW_PORTS_HTTP=127.0.0.1::8080
+
+export SP_CTRL_COMMAND=6000
+export SP_WORK_COMMAND=5000
 
 export RDB_COMMAND=5080
 export IDB_COMMAND=5090

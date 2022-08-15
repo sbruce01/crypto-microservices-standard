@@ -1,0 +1,58 @@
+#
+# Optional: Create volumes to include licence/configuration in the containers.
+#
+x-vols: &vols
+  volumes:
+  - ${kx_licence_dir}:/opt/kx/lic
+  - ${cfg_dir}:/opt/kx/cfg
+  - ${custom_dir}:/opt/kx/custom # Optional mount for loading custom code
+
+#
+# Optional: Create a network for processes to communicate.
+#
+x-kxnet: &kxnet
+  networks:
+  - kx
+
+networks:
+  kx:
+    name: kx
+    driver: bridge
+
+#
+# Services.
+#
+services:
+  controller:
+    image: ${sp_ctrl}
+    environment:
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+      - KXI_SP_CHECKPOINT_FREQ=0 # Disable checkpoints SB
+    ports:
+      - ${SP_CTRL_PORTS}
+    # command: ["-p", "6000"]
+    command: -p ${SP_CTRL_COMMAND}
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  worker:
+    image: ${sp_work}
+    ports:
+      - ${SP_WORK_COMMAND}
+    volumes:
+      - ${custom_dir}:/opt/kx/custom # Optional mount for loading custom code
+      # - .:/app                                 # Bind in the spec.q file
+    environment:
+      - KXI_SP_SPEC=/opt/kx/custom/spec.q                # Point to the bound spec.q file
+      - KXI_SP_PARENT_HOST=controller:${SP_CTRL_COMMAND}     # Point to the parent Controller
+      - KDB_LICENSE_B64=$KDB_LICENSE_B64
+      - KXI_SP_CHECKPOINT_FREQ=0 # Disable checkpoints SB
+
+    # command: ["-p", "5000"]
+    command: -p ${SP_WORK_COMMAND}
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - controller    

@@ -57,6 +57,8 @@ docker-compose -f 'docker-compose_'$1'_sm.yaml' up -d
 docker-compose -f 'docker-compose_'$1'_sg.yaml' up -d
 docker-compose -f 'docker-compose_'$1'_da.yaml' up -d
 
+docker-compose -f 'docker-compose_'$1'_sp.yaml' up -d
+
 sleep 3
 
 cd kdb-tick
@@ -84,10 +86,11 @@ ps aux | grep $1
 
 cd ../
 
-q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
-
 # Starting Dashboards
 cd dash
 q sample/demo.q -u 1 &
 q dash.q -p 10010 -u 1 &
 cd ../
+
+export QHOME=/home/sbruce1/lib/qce-20220615101214
+q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
