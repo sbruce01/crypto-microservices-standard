@@ -3,21 +3,17 @@
 // will be created in the global namespace when running the stream
 stream: .qsp.read.fromCallback[`publish]
 
-////////////////////////// DEV //////////////////////////////////
+  / .qsp.window.tumbling[00:01:00; `time]
 
-  / Version to return to a funciton if using .qsp.write.toProcess
-  .qsp.map[{ (`maxPrice;0!select max price by sym, exchange from x) }]
+  .qsp.window.tumbling[00:01:00; `time; .qsp.use ``sort!11b]
 
-  // Write output events to the console for local debugging
+  // ohlcv analytic
+
+  // Check if the first is the most recent
+  .qsp.map[ { select open:first price, high:max price, low:min price, close:last price, volume:sum size by sym, exchange, time:time.minute from x} ]
+
+  / // Write output events to the console for local debugging
   / .qsp.write.toConsole[]
-  / .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.u.upd;1b)]
-
-
-  .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.test.set;1b)]
-
-
-////////////////////////// END DEV //////////////////////////////////
-
 
 // When the pipeline is started by the Controller, the `onStart` hook is fired.
 // At this point, a tickerplant, or any other pub/sub interface, could be subscribed
@@ -32,7 +28,7 @@ stream: .qsp.read.fromCallback[`publish]
   // Subscribe to the relevant table for this pipeline
   if[.debug.logging;0N!"Subscribing to tables"];
   / {(set). x;-11!y}. h"(.u.sub[`trade;`]; .u`i`L)";
-  {(set). x;-11!y}. .tp.h"(.u.sub[`trade;`]; (.u.i;`:/opt/kx/tp_log_dir/crypto2022.08.15))";
+  {(set). x;-11!y}. .tp.h"(.u.sub[`trade;`]; (.u.i;`:/opt/kx/tp_log_dir/crypto2022.08.16))";
   // Define Tick callback for live (non-log replay) updates
   if[.debug.logging;0N!"Subscribed for tables:"];
   if[.debug.logging;0N!tables[]];
