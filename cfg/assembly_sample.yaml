@@ -80,6 +80,39 @@ tables:
           description: exchange
           type: symbol
 
+  ohlcv:
+      description: ohlcv
+      type: splayed
+      blockSize: 1000
+      prtnCol: time
+      # sortColsOrd: sym
+      # sortColsDisk: sym
+      columns:
+        - name: sym
+          description: sym
+          type: symbol
+        - name: exchange
+          description: exchange
+          type: symbol
+        - name: time
+          description: Partitioned timestamp column
+          type: timestamp
+        - name: open
+          description: open price
+          type: float
+        - name: high
+          description: high price
+          type: float
+        - name: low
+          description: low price
+          type: float
+        - name: close
+          description: close price
+          type: float
+        - name: volume
+          description: accumulated volume
+          type: float
+
 # Message bus configuration
 bus:
   messages:

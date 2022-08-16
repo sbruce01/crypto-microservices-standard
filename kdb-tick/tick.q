@@ -26,7 +26,12 @@ if[not system"p";system"p 5010"]
 
 \l tick/u.q
 
-.test.set: {x set y};
+.u.sp_upd: {
+    .debug.sp_upd:(x;y);
+	0N!first y;
+	0N!last y;
+	.u.upd[x 1;value flip 0!y 1];
+	};
 
 \d .u
 ld:{if[not type key L::`$(-10_string L),string x;.[L;();:;()]];i::j::-11!(-2;L);if[0<=type i;-2 (string L)," is a corrupt log. Truncate to length ",(string last i)," and restart";exit 1];hopen L};
@@ -52,7 +57,6 @@ if[not system"t";system"t 1000";
  .z.ts:{ts .z.D};
  upd:{[t;x]
  .debug.tx:(t;x);
- if[t = `maxPrice;.debug.maxPrice:(t;x)];
  ts"d"$a:.z.P;
  //if[not -16=type first first x;a:"n"$a;x:$[0>type first x;a,x;(enlist(count first x)#a),x]];
  f:key flip value t;
