@@ -22,7 +22,8 @@ stream:
   // Subscribe to the relevant table for this pipeline
   if[.debug.logging;0N!"Subscribing to tables"];
   / {(set). x;-11!y}. h"(.u.sub[`trade;`]; .u`i`L)";
-  {(set). x;-11!y}. .tp.h"(.u.sub[`trade;`]; (.u.i;`:/opt/kx/tp_log_dir/crypto2022.08.16))";
+  / {(set). x;-11!y}. .tp.h"(.u.sub[`trade;`]; (.u.i;`:/opt/kx/tp_log_dir/crypto2022.08.16))";
+  {(set). x;-11!y}. .tp.h"(.u.sub[`trade;`]; (.u.i;`$\":/opt/kx/tp_log_dir/\",last \"/\" vs string[.u.L]))";
   // Define Tick callback for live (non-log replay) updates
   if[.debug.logging;0N!"Subscribed for tables:"];
   if[.debug.logging;0N!tables[]];

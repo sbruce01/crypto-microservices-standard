@@ -82,7 +82,7 @@ tables:
 
   ohlcv:
       description: ohlcv
-      type: splayed
+      type: partitioned
       blockSize: 1000
       prtnCol: time
       # sortColsOrd: sym
@@ -91,6 +91,12 @@ tables:
         - name: sym
           description: sym
           type: symbol
+        # - name: sym
+        #   description: sym
+        #   type: symbol
+        #   attrMem: grouped
+        #   attrDisk: parted
+        #   attrOrd: parted        
         - name: exchange
           description: exchange
           type: symbol
@@ -115,7 +121,7 @@ tables:
 
   vwap:
       description: vwap
-      type: splayed
+      type: partitioned
       blockSize: 1000
       prtnCol: time
       # sortColsOrd: sym
@@ -124,6 +130,12 @@ tables:
         - name: sym
           description: sym
           type: symbol
+        # - name: sym
+        #   description: sym
+        #   type: symbol
+        #   attrMem: grouped
+        #   attrDisk: parted
+        #   attrOrd: parted        
         - name: exchange
           description: exchange
           type: symbol
