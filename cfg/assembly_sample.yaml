@@ -113,6 +113,30 @@ tables:
           description: accumulated volume
           type: float
 
+  vwap:
+      description: vwap
+      type: splayed
+      blockSize: 1000
+      prtnCol: time
+      # sortColsOrd: sym
+      # sortColsDisk: sym
+      columns:
+        - name: sym
+          description: sym
+          type: symbol
+        - name: exchange
+          description: exchange
+          type: symbol
+        - name: time
+          description: Partitioned timestamp column
+          type: timestamp
+        - name: vwap
+          description: vwap
+          type: float
+        - name: accVol
+          description: accumulated volume
+          type: float
+
 # Message bus configuration
 bus:
   messages:

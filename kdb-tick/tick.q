@@ -30,7 +30,9 @@ if[not system"p";system"p 5010"]
     .debug.sp_upd:(x;y);
 	0N!first y;
 	0N!last y;
-	.u.upd[x 1;value flip 0!y 1];
+	/ .u.upd[x 1;value flip 0!y 1];
+	/ .u.upd[x 0;value flip 0!y 0];
+	{.u.upd[x z;value flip 0!y z]}[x;y;]each til count x;
 	};
 
 \d .u
