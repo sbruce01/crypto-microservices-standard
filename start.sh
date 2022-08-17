@@ -47,7 +47,8 @@ echo -e 'Starting TP on port '${NODES_PORT}'...\n'
 
 #Navigate into kdb-tick directory to start the TP
 cd ./kdb-tick/
-q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
+# q tick.q $1 ./data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
+q tick.q $1 ${BASE_DIRECTORY}/kdb-tick/data/tplogs -p ${NODES_PORT} -env $1 > ${LOG_DIRECTORY}/tp.log 2>&1 &
 
 #Move back to directory with the docker-compose files
 cd ../
@@ -57,6 +58,8 @@ docker-compose -f 'docker-compose_'$1'_sm.yaml' up -d
 docker-compose -f 'docker-compose_'$1'_sg.yaml' up -d
 docker-compose -f 'docker-compose_'$1'_da.yaml' up -d
 
+docker-compose -f 'docker-compose_'$1'_sp.yaml' up -d
+
 sleep 3
 
 cd kdb-tick
@@ -65,9 +68,6 @@ cd kdb-tick
 #q feedhandler_allLevels_new.q -env $1 &
 #q feedhandler_gda.q -p 6001 -env $1 >> feedhandler_gda.log 2>&1 &
 
-# Sam's local setup
-PATH="/home/sbruce1/anaconda3/bin:/home/sbruce1/bin:/home/sbruce1/anaconda3/bin:/home/sbruce1/anaconda3/bin:/home/sbruce1/anaconda3/condabin:$PATH"
-#####
 q feedhandler_microservicesBitmexBitfinex.q -p 6001 -env $1 > ${LOG_DIRECTORY}/feedhandler_microservices.log 2>&1 &
 ## Start the CTP GW for processes to query and subscribe to
 q ctp_gw.q -p 5555 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
