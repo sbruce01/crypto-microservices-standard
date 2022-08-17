@@ -68,9 +68,6 @@ cd kdb-tick
 #q feedhandler_allLevels_new.q -env $1 &
 #q feedhandler_gda.q -p 6001 -env $1 >> feedhandler_gda.log 2>&1 &
 
-# Sam's local setup
-PATH="/home/sbruce1/anaconda3/bin:/home/sbruce1/bin:/home/sbruce1/anaconda3/bin:/home/sbruce1/anaconda3/bin:/home/sbruce1/anaconda3/condabin:$PATH"
-#####
 q feedhandler_microservicesBitmexBitfinex.q -p 6001 -env $1 > ${LOG_DIRECTORY}/feedhandler_microservices.log 2>&1 &
 ## Start the CTP GW for processes to query and subscribe to
 q ctp_gw.q -p 5555 -env $1 > ${LOG_DIRECTORY}/ctp_gw.log 2>&1 &
@@ -87,11 +84,10 @@ ps aux | grep $1
 
 cd ../
 
+q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &
+
 # Starting Dashboards
 cd dash
 q sample/demo.q -u 1 &
 q dash.q -p 10010 -u 1 &
 cd ../
-
-export QHOME=/home/sbruce1/lib/qce-20220615101214
-q gateway.q -p 40002 > ${LOG_DIRECTORY}/gateway.log 2>&1 &

@@ -1,17 +1,9 @@
 
 export DOCKER_REG=registry.dl.kx.com
 
-#export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic)
-#export q=${DOCKER_REG}/kdb-4.0:2021.12.07
-#export kx_licence_dir=~/.qp.licenses
-
-## Sam's Local Setup
-
-export KDB_LICENSE_B64=$(base64 -w0 /home/sbruce1/lib/qce-20220615101214/kc.lic)
-export q=${DOCKER_REG}/kdb-4.0:2021.12.07
-export kx_licence_dir=/home/sbruce1/lib/qce-20220615101214
-
-#####################
+export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic)  # Edit
+export q=${DOCKER_REG}/kdb-4.0:2021.12.07               # Edit
+export kx_licence_dir=~/.qp.licenses                    # Edit
 
 export sg_gw=${DOCKER_REG}/kxi-sg-gw:1.1.0
 export sg_rc=${DOCKER_REG}/kxi-sg-rc:1.1.2
@@ -40,20 +32,14 @@ export rc_sidecar_config_json=sidecar.json
 export rdb_sidecar_config_json=sidecar.json
 export custom_agg_code=custom
 export proxy_config_json=proxy.q
-#export cfg_dir="./cfg"             # Edit
-#export custom_dir="./custom"       # Edit
-# Sam's Local setup
-export cfg_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/cfg"
-export custom_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/custom"
-export tp_log_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/kdb-tick/data/tplogs"
+export cfg_dir="./cfg"             # Edit
+export custom_dir="./custom"       # Edit
+
+
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
 
-#export mnt_dir="/data/db"
-
-# Sam's Local Setup
-export mnt_dir="/home/sbruce1/Work_Projects/CryptoMicroservicesDev/Crypto/data/db"
-###############
+export mnt_dir="/data/db"           # Edit
 
 export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`
 
