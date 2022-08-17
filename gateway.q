@@ -26,20 +26,32 @@ vwap_depth:{$[any z<=s:sums x;(deltas z & s) wavg y;0nf]};
 // Defining a function to query data from within a Q session (long way build up later)
 getData:{[tbl;sd;ed;ids;exc]
     wClause:();
-    if[not all null ids;wClause,:enlist("in";`sym;enlist (),ids)];    
-    if[not all null exc;wClause,:enlist("in";`exchange;enlist (),exc)];    
+    if[not all null ids;wClause,:enlist("in";`sym;(),ids)];
+    if[not all null exc;wClause,:enlist("in";`exchange;(),exc)];
     tab:$[all null ids,exc;
         last gw(`.kxi.getData;`table`startTS`endTS!(tbl;sd;ed);`callback;(0#`)!());
-        last gw(`.kxi.getData;`table`startTS`endTS`filter!(`trade;.z.p-00:20;.z.p;wClause);`callback;(0#`)!());
+        last gw(`.kxi.getData;`table`startTS`endTS`filter!(tbl;sd;ed;wClause);`callback;(0#`)!())
     ];
     :tab
-    };
+  };
+
+getCorrelation:{[exchange;startTime;endTime]
+    data:getData[`vwap;startTime;endTime;`;exchange];
+    res:select vwap:accVol wavg vwap by sym, time from data where not null vwap;
+    times:([]time:asc distinct exec time from res);
+    rack:times cross select distinct sym from res;
+    col_order:exec sym from `mcap xdesc select mcap:sum vwap*accVol by sym from data where not null vwap;
+    matrix:update fills vwap by sym from rack lj res;
+    correlation:{x cor/:\: x} col_order xcols exec vwap by sym from matrix;
+    areCols:(cols correlation) where {not all null value x} each -1_value update sym:key[correlation] from correlation;
+    $[count areCols;:areCols!flip areCols!correlation[areCols][areCols];:()];
+  };
 
 // Defining a funciton to query data with the specification of columns to retain
 getDataWithCols:{[tbl;sd;ed;ids;exc;columns]
     wClause:();
-    if[not all null ids;wClause,:enlist("in";`sym;enlist (),ids)];    
-    if[not all null exc;wClause,:enlist("in";`exchange;enlist (),exc)];    
+    if[not all null ids;wClause,:enlist("in";`sym;(),ids)];    
+    if[not all null exc;wClause,:enlist("in";`exchange;(),exc)];    
     tab:$[all null ids,exc;
         $[all null columns;last gw(`.kxi.getData;`table`startTS`endTS!(tbl;sd;ed);`callback;(0#`)!());last gw(`.kxi.getData;`table`startTS`endTS`agg!(tbl;sd;ed;columns);`callback;(0#`)!())];
         $[all null columns;last gw(`.kxi.getData;`table`startTS`endTS`filter!(tbl;sd;ed;wClause);`callback;(0#`)!());last gw(`.kxi.getData;`table`startTS`endTS`filter`agg!(tbl;sd;ed;wClause;columns);`callback;(0#`)!())]

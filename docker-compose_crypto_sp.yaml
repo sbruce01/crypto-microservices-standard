@@ -52,7 +52,7 @@ services:
       - KXI_SP_CHECKPOINT_FREQ=0 # Disable checkpoints SB
 
     # command: ["-p", "5000"]
-    command: -p ${SP_WORK_COMMAND} -ip_address ${host_ip} -tp_log /opt/kx/tp_log_dir
+    command: -p ${SP_WORK_COMMAND} -tp_port ${NODES_PORT} -ip_address ${host_ip} -tp_log /opt/kx/tp_log_dir
     deploy:
       restart_policy:
         condition: on-failure

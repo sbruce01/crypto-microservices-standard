@@ -2,7 +2,7 @@
   "id": "b91215f0-7e4a-1aa3-cb63-54f7e3615084",
   "name": "Crypto",
   "creationDate": "Mon, 14 Mar 2022 02:24:28 GMT",
-  "lastUpdateDate": "Wed, 01 Jun 2022 04:56:48 GMT",
+  "lastUpdateDate": "Wed, 17 Aug 2022 02:29:15 GMT",
   "thumb": null,
   "screenDetails": [
     {
@@ -35,7 +35,6 @@
                     "_Index": 0,
                     "_LayerId": "layer_60159",
                     "_PossibleColumns": [
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -48,7 +47,6 @@
                     ],
                     "_PossibleColumnsWithItself": [
                       "<this>",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -63,7 +61,6 @@
                       "<thisX>",
                       "<thisY>",
                       "<thisName>",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -76,7 +73,6 @@
                     ],
                     "_PossibleRadius": [
                       "Fixed Size",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -157,44 +153,52 @@
                     "_LayerId": "layer_8977",
                     "_PossibleColumns": [
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "side",
+                      "price",
+                      "size",
+                      "action",
+                      "orderType",
+                      "exchange"
                     ],
                     "_PossibleColumnsWithItself": [
                       "<this>",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "side",
+                      "price",
+                      "size",
+                      "action",
+                      "orderType",
+                      "exchange"
                     ],
                     "_PossibleColumnsWithXYKey": [
                       "<thisX>",
                       "<thisY>",
                       "<thisName>",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "side",
+                      "price",
+                      "size",
+                      "action",
+                      "orderType",
+                      "exchange"
                     ],
                     "_PossibleRadius": [
                       "Fixed Size",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "side",
+                      "price",
+                      "size",
+                      "action",
+                      "orderType",
+                      "exchange"
                     ],
                     "_PossibleXAxes": [
                       "XAxis 1"
@@ -215,13 +219,14 @@
                     ]
                   },
                   "Basics": {
+                    "Enabled": false,
                     "LegendEnabled": false,
                     "LegendLabelColor": "",
                     "Name": "Bids",
                     "BorderWidth": 2,
                     "Data": {
                       "_dashboardsType": "data",
-                      "value": "vwap depth"
+                      "value": "order_bubbles"
                     }
                   },
                   "Axes": {
@@ -248,44 +253,48 @@
                     "_LayerId": "layer_11381",
                     "_PossibleColumns": [
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "price",
+                      "tradeID",
+                      "side",
+                      "size",
+                      "exchange"
                     ],
                     "_PossibleColumnsWithItself": [
                       "<this>",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "price",
+                      "tradeID",
+                      "side",
+                      "size",
+                      "exchange"
                     ],
                     "_PossibleColumnsWithXYKey": [
                       "<thisX>",
                       "<thisY>",
                       "<thisName>",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "price",
+                      "tradeID",
+                      "side",
+                      "size",
+                      "exchange"
                     ],
                     "_PossibleRadius": [
                       "Fixed Size",
                       "time",
-                      "vwap_bid_1",
-                      "vwap_bid_5000000",
-                      "vwap_bid_10000000",
-                      "vwap_ask_1",
-                      "vwap_ask_5000000",
-                      "vwap_ask_10000000"
+                      "sym",
+                      "orderID",
+                      "price",
+                      "tradeID",
+                      "side",
+                      "size",
+                      "exchange"
                     ],
                     "_PossibleXAxes": [
                       "XAxis 1"
@@ -306,6 +315,7 @@
                     ]
                   },
                   "Basics": {
+                    "Enabled": false,
                     "LegendEnabled": false,
                     "LegendLabelColor": "",
                     "Name": "Asks",
@@ -314,7 +324,7 @@
                     "BorderWidth": 2,
                     "Data": {
                       "_dashboardsType": "data",
-                      "value": "vwap depth"
+                      "value": "trades"
                     }
                   },
                   "Axes": {
@@ -347,7 +357,6 @@
                     "_Index": 3,
                     "_LayerId": "layer_4866",
                     "_PossibleColumns": [
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -359,7 +368,6 @@
                     ],
                     "_PossibleColumnsWithItself": [
                       "<this>",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -373,7 +381,6 @@
                       "<thisX>",
                       "<thisY>",
                       "<thisName>",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -385,7 +392,6 @@
                     ],
                     "_PossibleRadius": [
                       "Fixed Size",
-                      "date",
                       "time",
                       "sym",
                       "orderID",
@@ -839,13 +845,12 @@
       "_serverPaging": false
     },
     "params": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [],
       "_dataType": "query",
       "_dataSource": "kdb",
-      "_connection": "crypto",
+      "_connection": "GW",
       "_mappings": {},
       "_maxRows": 2000,
       "_subscriptionType": "static",
@@ -865,7 +870,7 @@
         },
         {
           "isExpanded": true,
-          "weight": 1
+          "weight": 0
         },
         {
           "isExpanded": true,
@@ -943,11 +948,9 @@
       "_serverPaging": false
     },
     "order_bubbles": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [
-        "date",
         "time",
         "sym",
         "orderID",
@@ -1012,11 +1015,9 @@
       "_serverPaging": false
     },
     "trades": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [
-        "date",
         "time",
         "sym",
         "orderID",
@@ -1030,7 +1031,7 @@
       "_dataSource": "kdb",
       "_connection": "GW",
       "_mappings": {
-        "key": "date",
+        "key": "time",
         "mappings": {},
         "value": "time"
       },
@@ -1090,6 +1091,7 @@
   "borderSpacing": 0,
   "borderShadow": false,
   "saveViewerState": "enabled",
+  "hostnameAccess": "",
   "enableShareDashboard": false,
   "notifications": {
     "Notifications": {
@@ -1111,7 +1113,7 @@
   "unsavedViewerPrompt": false,
   "advancedCss": "",
   "cssClasses": "",
-  "version": "4.6.0P1",
-  "wasChanged": false,
+  "version": "4.7.3",
+  "wasChanged": true,
   "shortcuts": []
 }

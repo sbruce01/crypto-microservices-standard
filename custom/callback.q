@@ -9,13 +9,15 @@ stream:
     ohlcv_tab:select open:first price, high:max price, low:min price, close:last price, volume:sum size by sym, exchange, time:(`date$time) + time.minute from x;
     ((`vwap;`ohlcv);(vwap_tab;ohlcv_tab))} ]
   / // Write output events to the console for local debugging
-  .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.u.sp_upd;1b)]
+  / .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";`.u.sp_upd;1b)]
+  .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":",(.Q.opt[.z.x] `tp_port);`.u.sp_upd;1b)]
   / .qsp.write.toConsole[]
 
 .qsp.onStart {
   // Link up to TP and subscribe for updates
   if[.debug.logging;0N!raze "Connecting to the TP with host of: ",.Q.opt[.z.x] `ip_address];
-  s: .z.p; while[(null .tp.h:@[hopen;`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";0N])&.z.p<s+00:00:30;0];
+  / s: .z.p; while[(null .tp.h:@[hopen;`$raze ":",(.Q.opt[.z.x] `ip_address),":5010";0N])&.z.p<s+00:00:30;0];
+  s: .z.p; while[(null .tp.h:@[hopen;`$raze ":",(.Q.opt[.z.x] `ip_address),":",(.Q.opt[.z.x] `tp_port);0N])&.z.p<s+00:00:30;0];
   // Handle TP log replay being lists instead of tables
   if[.debug.logging;0N!"Initiating update function for log replay"];
   upd::enlist[`trade]!enlist{ohlcv flip cols[trade]!x};

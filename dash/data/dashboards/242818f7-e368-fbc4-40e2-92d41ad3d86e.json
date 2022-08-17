@@ -2,7 +2,7 @@
   "id": "242818f7-e368-fbc4-40e2-92d41ad3d86e",
   "name": "Crypto Dashboard",
   "creationDate": "Wed, 04 May 2022 00:21:56 GMT",
-  "lastUpdateDate": "Thu, 11 Aug 2022 01:16:04 GMT",
+  "lastUpdateDate": "Wed, 17 Aug 2022 02:13:52 GMT",
   "thumb": null,
   "screenDetails": [
     {
@@ -40,7 +40,7 @@
                     "TitleAlign": "Left",
                     "Expanded": true,
                     "Flex": false,
-                    "Weight": 6.00054269955833,
+                    "Weight": 7.0944113629269925,
                     "Resizeable": true,
                     "HideTitle": false
                   },
@@ -50,7 +50,7 @@
                     "TitleAlign": "Left",
                     "Expanded": false,
                     "Flex": false,
-                    "Weight": 2,
+                    "Weight": 14.72002163168011,
                     "Resizeable": true,
                     "HideTitle": false
                   },
@@ -60,7 +60,7 @@
                     "TitleAlign": "Left",
                     "Expanded": true,
                     "Flex": false,
-                    "Weight": 12.188823202742876,
+                    "Weight": 11.094954539374212,
                     "Resizeable": true,
                     "HideTitle": false
                   }
@@ -330,17 +330,50 @@
                                 "_Type": "Line",
                                 "_Index": 0,
                                 "_LayerId": "layer_8977",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -398,17 +431,50 @@
                                 "_Type": "Line",
                                 "_Index": 1,
                                 "_LayerId": "layer_3251",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -474,17 +540,50 @@
                                 "_Type": "Bubble",
                                 "_Index": 2,
                                 "_LayerId": "layer_87022",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -531,17 +630,50 @@
                                 "_Type": "Bubble",
                                 "_Index": 3,
                                 "_LayerId": "layer_87437",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "time",
+                                  "sym",
+                                  "orderID",
+                                  "price",
+                                  "tradeID",
+                                  "side",
+                                  "size",
+                                  "exchange"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -845,17 +977,38 @@
                                 "_Type": "Bar",
                                 "_Index": 0,
                                 "_LayerId": "layer_8977",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -866,7 +1019,6 @@
                                 ]
                               },
                               "Basics": {
-                                "Enabled": false,
                                 "LegendLabelColor": "",
                                 "Name": "Hourly Volume",
                                 "BackgroundOpacity": 40,
@@ -894,17 +1046,38 @@
                                 "_Type": "Line",
                                 "_Index": 1,
                                 "_LayerId": "layer_81811",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "sym",
+                                  "date",
+                                  "vwap",
+                                  "accVol",
+                                  "vwap_rolling_15_hour"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -924,7 +1097,6 @@
                                 ]
                               },
                               "Basics": {
-                                "Enabled": false,
                                 "LegendLabelColor": "",
                                 "Name": "15 hour rolling VWAP",
                                 "BackgroundColor": "#F23A66",
@@ -953,17 +1125,54 @@
                                 "_Type": "Candlestick",
                                 "_Index": 2,
                                 "_LayerId": "layer_81914",
-                                "_PossibleColumns": [],
+                                "_PossibleColumns": [
+                                  "sym",
+                                  "exchange",
+                                  "time",
+                                  "bucket",
+                                  "open",
+                                  "high",
+                                  "low",
+                                  "close",
+                                  "volume"
+                                ],
                                 "_PossibleColumnsWithItself": [
-                                  "<this>"
+                                  "<this>",
+                                  "sym",
+                                  "exchange",
+                                  "time",
+                                  "bucket",
+                                  "open",
+                                  "high",
+                                  "low",
+                                  "close",
+                                  "volume"
                                 ],
                                 "_PossibleColumnsWithXYKey": [
                                   "<thisX>",
                                   "<thisY>",
-                                  "<thisName>"
+                                  "<thisName>",
+                                  "sym",
+                                  "exchange",
+                                  "time",
+                                  "bucket",
+                                  "open",
+                                  "high",
+                                  "low",
+                                  "close",
+                                  "volume"
                                 ],
                                 "_PossibleRadius": [
-                                  "Fixed Size"
+                                  "Fixed Size",
+                                  "sym",
+                                  "exchange",
+                                  "time",
+                                  "bucket",
+                                  "open",
+                                  "high",
+                                  "low",
+                                  "close",
+                                  "volume"
                                 ],
                                 "_PossibleXAxes": [
                                   "XAxis 1"
@@ -974,7 +1183,6 @@
                                 ]
                               },
                               "Basics": {
-                                "Enabled": false,
                                 "LegendEnabled": false,
                                 "LegendLabelColor": "",
                                 "Name": "Candle",
@@ -2484,8 +2692,9 @@
       "_serverPaging": false
     },
     "trade_summary": {
-      "_autoExec": true,
+      "_pagingType": "NONE",
       "_autoExecute": true,
+      "_autoExec": true,
       "_columns": [
         "sym",
         "x",
@@ -2587,11 +2796,9 @@
       "_serverPaging": false
     },
     "ohlcv": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [
-        "date",
         "sym",
         "exchange",
         "time",
@@ -2606,7 +2813,7 @@
       "_dataSource": "kdb",
       "_connection": "GW",
       "_mappings": {
-        "key": "date",
+        "key": "sym",
         "mappings": {},
         "value": "sym"
       },
@@ -2636,7 +2843,7 @@
           "weight": 2
         }
       ],
-      "_queryString": "{[plot;syms]\r\n// tab:last gw(`trade_summary;`startTS`endTS!(.z.p-2D00:00:00;.z.p);`callback;(0#`)!());\r\n// `time xasc select from tab where sym = syms\r\n\r\n  res:`time xasc getData[`ohlcv;.z.p-2D00:00:00;.z.p;syms;`];\r\n  bucket:ceiling {(max[x]-min x)%2000*60*60*10000000}res`time;\r\n  select bucket,first open,max high,min low, last close, sum volume by date,sym, exchange,time:time.date+bucket xbar time.minute from res\r\n\r\n  }",
+      "_queryString": "{[plot;syms]\r\n// tab:last gw(`trade_summary;`startTS`endTS!(.z.p-2D00:00:00;.z.p);`callback;(0#`)!());\r\n// `time xasc select from tab where sym = syms\r\n\r\n  res:`time xasc getData[`ohlcv;.z.p-2D00:00:00;.z.p;syms;`];\r\n  bucket:ceiling {(max[x]-min x)%2000*60*60*10000000}res`time;\r\n  $[`date in cols res;\r\n    select bucket,first open,max high,min low, last close, sum volume by date,sym, exchange,time:time.date+bucket xbar time.minute from res;\r\n    select bucket,first open,max high,min low, last close, sum volume by sym, exchange,time:time.date+bucket xbar time.minute from res]\r\n\r\n  }",
       "_queryParams": [
         {
           "name": "plot",
@@ -2928,9 +3135,8 @@
       "_serverPaging": false
     },
     "vwap_rolling": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [
         "sym",
         "date",
