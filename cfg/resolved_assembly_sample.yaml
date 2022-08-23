@@ -149,15 +149,48 @@ tables:
           description: accumulated volume
           type: float
 
+  book:
+      description: Book
+      type: partitioned
+      blockSize: 1000
+      prtnCol: time
+      sortColsOrd: sym
+      sortColsDisk: sym
+      columns:
+        - name: time
+          description: Partitioned timestamp column
+          type: timestamp
+        - name: sym
+          description: sym
+          type: symbol
+          attrMem: grouped
+          attrDisk: parted
+          attrOrd: parted
+        - name: exchange
+          description: exchange
+          type: symbol
+        - name: bids
+          description: bids
+          type: 
+        - name: bidsizes
+          description: bidsizes
+          type: 
+        - name: asks
+          description: asks
+          type: 
+        - name: asksizes
+          description: asksizes
+          type: 
+
 # Message bus configuration
 bus:
   messages:
     protocol: custom
-    nodes: 172.25.74.8:5010
+    nodes: 172.24.45.22:5010
     topic: dataStream
   stream:
     protocol: custom
-    nodes: 172.25.74.8:5010
+    nodes: 172.24.45.22:5010
     topic: dataStream
 
 # Database mount configuration

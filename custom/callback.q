@@ -1,45 +1,8 @@
 // Logging on/off
 .debug.logging:1b;
 
-// Define book tables
-book: ([]`s#time:"p"$();`g#sym:`$();bids:();bidsizes:();asks:();asksizes:());
-lastBookBySymExch:([sym:`$();exchange:`$()]bidbook:();askbook:());
-
-//////////////////// Define Functions for Book
-
-bookbuilder:{[x;y]
-    .debug.xy:(x;y);
-    $[not y 0;x;
-        $[
-            `insert=y 4;
-                x,enlist[y 1]! enlist y 2 3;
-            `update=y 4;
-                $[any (y 1) in key x;
-                    [
-                        //update size
-                        a:.[x;(y 1;1);:;y 3];
-                        //update price if the price col is not null
-                        $[0n<>y 2;.[a;(y 1;0);:;y 2];a]
-                    ];
-                    x,enlist[y 1]! enlist y 2 3
-                ];  
-            `remove=y 4;
-                $[any (y 1) in key x;
-                    enlist[y 1] _ x;
-                    x];
-            x
-        ]
-    ]
-    };
-
-generateOrderbook:{[newOrder]
-    books:update bidbook:bookbuilder\[@[lastBookBySymExch;(first sym; first exchange)]`bidbook;flip (side like "bid";orderID;price;size;action)],askbook:bookbuilder\[@[lastBookBySymExch;(first sym; first exchange)]`askbook;flip (side like "ask";orderID;price;size;action)] by sym, exchange from newOrder;
-    lastBookBySymExch,:exec last bidbook,last askbook by sym, exchange from books;
-    //generate the orderbook 
-    books:select time,sym,exchange,bids:(value each bidbook)[;;0],bidsizes:(value each bidbook)[;;1],asks:(value each askbook)[;;0],asksizes:(value each askbook)[;;1] from books;
-    books:update bids:desc each distinct each bids,bidsizes:{sum each x group y}'[bidsizes;bids] @' desc each distinct each bids,asks:asc each distinct each asks,asksizes:{sum each x group y}'[asksizes;asks] @' asc each distinct each asks from books
-
-    };
+system "l /opt/kx/custom/bookFunctions.q";
+mySum:1;
 
 ///////////////////////////////////////////////
 
@@ -59,10 +22,18 @@ vwap_stream: .qsp.read.fromCallback[`vwap]
   / .qsp.write.toConsole[]
 
 book_stream: .qsp.read.fromCallback[`bookCallback]
-  .qsp.window.tumbling[00:00:10; `time; .qsp.use ``sort!11b]
-  .qsp.map[ { (`book;first select time from x) }]
-/   .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":",(.Q.opt[.z.x] `tp_port);`.u.upd;1b)]
-  .qsp.write.toConsole[]
+  .qsp.map[{[op;md;data]
+        lastBookBySymExch: .qsp.get[op;md];
+        books:update bidbook:bookbuilder\[@[lastBookBySymExch;(first sym; first exchange)]`bidbook;flip (side like "bid";orderID;price;size;action)],askbook:bookbuilder\[@[lastBookBySymExch;(first sym; first exchange)]`askbook;flip (side like "ask";orderID;price;size;action)] by sym, exchange from data;
+        lastBookBySymExch,:exec last bidbook,last askbook by sym, exchange from books;
+        .qsp.set[op;md;lastBookBySymExch];
+        books:select time,sym,exchange,bids:(value each bidbook)[;;0],bidsizes:(value each bidbook)[;;1],asks:(value each askbook)[;;0],asksizes:(value each askbook)[;;1] from books;
+        books:update bids:desc each distinct each bids,bidsizes:{sum each x group y}'[bidsizes;bids] @' desc each distinct each bids,asks:asc each distinct each asks,asksizes:{sum each x group y}'[asksizes;asks] @' asc each distinct each asks from books;
+        (`book;value flip books)
+        }; .qsp.use ``state!(::;([sym:`$();exchange:`$()]bidbook:();askbook:()) upsert (`;`;()!();()!()))]
+  .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":",(.Q.opt[.z.x] `tp_port);`.u.upd;1b)]
+/   .qsp.write.toProcess[.qsp.use `handle`target`spread!(`$raze ":",(.Q.opt[.z.x] `ip_address),":",(.Q.opt[.z.x] `tp_port);`.u.test;1b)]
+/   .qsp.write.toConsole[]
 
 
 .qsp.onStart {
