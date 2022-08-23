@@ -26,11 +26,6 @@ if[not system"p";system"p 5010"]
 
 \l tick/u.q
 
-.u.sp_upd: {
-    .debug.sp_upd:(x;y);
-	{.u.upd[x z;value flip 0!y z]}[x;y;]each til count x;
-	};
-
 \d .u
 ld:{if[not type key L::`$(-10_string L),string x;.[L;();:;()]];i::j::-11!(-2;L);if[0<=type i;-2 (string L)," is a corrupt log. Truncate to length ",(string last i)," and restart";exit 1];hopen L};
 tick:{init[];
