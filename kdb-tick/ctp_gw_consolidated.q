@@ -1,7 +1,7 @@
 // q ctp_gw.q localhost:5002 localhost:5008 localhost:5000 &
 // HDB, RDB, TP
 \l tick/gw.q
-system"l tick/sym.q"
+system"l tick/crypto.q"
 
 // load in and define other tables to publish
 last_book:([]time:"p"$();sym:`$();side:`$();price:"f"$();size:"f"$());

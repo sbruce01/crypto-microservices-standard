@@ -2,7 +2,6 @@
 .debug.logging:1b;
 
 system "l /opt/kx/custom/bookFunctions.q";
-mySum:1;
 
 ///////////////////////////////////////////////
 

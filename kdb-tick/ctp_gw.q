@@ -1,6 +1,6 @@
 /q tick.q SRC [DST] [-p 5010] [-o h]
 \l ../gateway.q
-system"l tick/sym.q"
+system"l tick/crypto.q"
 
 // load in and define other tables to publish
 last_book:([]time:"p"$();sym:`$();side:`$();price:"f"$();size:"f"$());
