@@ -155,18 +155,6 @@ establishWS:{
     request:x[`request];
     callbackFunc:x[`callbackFunc];
 
-    //pass the exchange value to the gda upd func
-    if[request[`feed] like "normalised";
-        callbackFunc set .gdaNormalised.upd[;request[`exchange]]
-    ];
-
-    if[request[`feed] like "trades";
-        callbackFunc set .gdaTrades.upd[;request[`exchange]]
-    ];
-
-    if[request[`feed] like "raw";
-        callbackFunc set .gdaRaw.upd[;request[`exchange]]
-    ];
 
     currentExchange:$[`op`exchange`feed~key request;string request[`exchange];string (` vs callbackFunc)[1]];
     currentFeed:$[`op`exchange`feed~key request;request[`feed];$["" like request[`channel];request[`args];request[`channel]]];

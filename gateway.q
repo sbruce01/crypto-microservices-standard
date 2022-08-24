@@ -9,11 +9,11 @@ gw:hopen "J"$last ":" vs first system"docker port crypto-sggw-1"
 // Attempting to import the rest functionality
 $["/"=last getenv`QHOME;runCommand:"l ",a:,[getenv`QHOME;"rest.q_"];runCommand:"l ",a:,[getenv`QHOME;"/rest.q_"]];
 
-.gda.restEnabled:0b;
+.rest.restEnabled:0b;
 
 loadRestFunctionality:{
   system[x];
-  .gda.restEnabled:1b;
+  .rest.restEnabled:1b;
   0N!"Successfully loaded in Rest";
  };
 
@@ -61,7 +61,7 @@ getDataWithCols:{[tbl;sd;ed;ids;exc;columns]
     
 
 // If the rest functionality has been imported successfully set registers
-if[.gda.restEnabled;
+if[.rest.restEnabled;
   // Defining the function to be called from the REST endpoint
   .db.getDataREST:{
     .debug.getDataREST:x;
