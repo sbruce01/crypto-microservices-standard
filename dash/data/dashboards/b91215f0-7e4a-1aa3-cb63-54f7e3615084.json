@@ -2,7 +2,7 @@
   "id": "b91215f0-7e4a-1aa3-cb63-54f7e3615084",
   "name": "Crypto",
   "creationDate": "Mon, 14 Mar 2022 02:24:28 GMT",
-  "lastUpdateDate": "Wed, 17 Aug 2022 02:29:15 GMT",
+  "lastUpdateDate": "Tue, 23 Aug 2022 06:10:09 GMT",
   "thumb": null,
   "screenDetails": [
     {
@@ -219,7 +219,6 @@
                     ]
                   },
                   "Basics": {
-                    "Enabled": false,
                     "LegendEnabled": false,
                     "LegendLabelColor": "",
                     "Name": "Bids",
@@ -253,48 +252,44 @@
                     "_LayerId": "layer_11381",
                     "_PossibleColumns": [
                       "time",
-                      "sym",
-                      "orderID",
-                      "price",
-                      "tradeID",
-                      "side",
-                      "size",
-                      "exchange"
+                      "vwap_bid_1",
+                      "vwap_bid_5000000",
+                      "vwap_bid_10000000",
+                      "vwap_ask_1",
+                      "vwap_ask_5000000",
+                      "vwap_ask_10000000"
                     ],
                     "_PossibleColumnsWithItself": [
                       "<this>",
                       "time",
-                      "sym",
-                      "orderID",
-                      "price",
-                      "tradeID",
-                      "side",
-                      "size",
-                      "exchange"
+                      "vwap_bid_1",
+                      "vwap_bid_5000000",
+                      "vwap_bid_10000000",
+                      "vwap_ask_1",
+                      "vwap_ask_5000000",
+                      "vwap_ask_10000000"
                     ],
                     "_PossibleColumnsWithXYKey": [
                       "<thisX>",
                       "<thisY>",
                       "<thisName>",
                       "time",
-                      "sym",
-                      "orderID",
-                      "price",
-                      "tradeID",
-                      "side",
-                      "size",
-                      "exchange"
+                      "vwap_bid_1",
+                      "vwap_bid_5000000",
+                      "vwap_bid_10000000",
+                      "vwap_ask_1",
+                      "vwap_ask_5000000",
+                      "vwap_ask_10000000"
                     ],
                     "_PossibleRadius": [
                       "Fixed Size",
                       "time",
-                      "sym",
-                      "orderID",
-                      "price",
-                      "tradeID",
-                      "side",
-                      "size",
-                      "exchange"
+                      "vwap_bid_1",
+                      "vwap_bid_5000000",
+                      "vwap_bid_10000000",
+                      "vwap_ask_1",
+                      "vwap_ask_5000000",
+                      "vwap_ask_10000000"
                     ],
                     "_PossibleXAxes": [
                       "XAxis 1"
@@ -315,7 +310,6 @@
                     ]
                   },
                   "Basics": {
-                    "Enabled": false,
                     "LegendEnabled": false,
                     "LegendLabelColor": "",
                     "Name": "Asks",
@@ -324,7 +318,7 @@
                     "BorderWidth": 2,
                     "Data": {
                       "_dashboardsType": "data",
-                      "value": "trades"
+                      "value": "vwap depth"
                     }
                   },
                   "Axes": {
@@ -722,9 +716,8 @@
   },
   "data": {
     "vwap depth": {
-      "_pagingType": "NONE",
-      "_autoExecute": true,
       "_autoExec": true,
+      "_autoExecute": true,
       "_columns": [
         "time",
         "vwap_bid_1",
@@ -845,8 +838,9 @@
       "_serverPaging": false
     },
     "params": {
-      "_autoExec": true,
+      "_pagingType": "NONE",
       "_autoExecute": true,
+      "_autoExec": true,
       "_columns": [],
       "_dataType": "query",
       "_dataSource": "kdb",

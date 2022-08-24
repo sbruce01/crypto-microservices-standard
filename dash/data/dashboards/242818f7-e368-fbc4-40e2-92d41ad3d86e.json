@@ -2,7 +2,7 @@
   "id": "242818f7-e368-fbc4-40e2-92d41ad3d86e",
   "name": "Crypto Dashboard",
   "creationDate": "Wed, 04 May 2022 00:21:56 GMT",
-  "lastUpdateDate": "Wed, 17 Aug 2022 02:13:52 GMT",
+  "lastUpdateDate": "Tue, 23 Aug 2022 05:53:29 GMT",
   "thumb": null,
   "screenDetails": [
     {
@@ -48,7 +48,7 @@
                     "SectionId": "section_3059",
                     "Title": "Price and Size",
                     "TitleAlign": "Left",
-                    "Expanded": false,
+                    "Expanded": true,
                     "Flex": false,
                     "Weight": 14.72002163168011,
                     "Resizeable": true,
@@ -58,7 +58,7 @@
                     "SectionId": "section_2622",
                     "Title": "Candle and Correlation",
                     "TitleAlign": "Left",
-                    "Expanded": true,
+                    "Expanded": false,
                     "Flex": false,
                     "Weight": 11.094954539374212,
                     "Resizeable": true,
@@ -2796,8 +2796,9 @@
       "_serverPaging": false
     },
     "ohlcv": {
-      "_autoExec": true,
+      "_pagingType": "NONE",
       "_autoExecute": true,
+      "_autoExec": true,
       "_columns": [
         "sym",
         "exchange",
