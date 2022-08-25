@@ -1,4 +1,4 @@
-
+export COMPOSE_PROJECT_NAME=crypto
 export DOCKER_REG=registry.dl.kx.com
 
 export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic)  # Edit
