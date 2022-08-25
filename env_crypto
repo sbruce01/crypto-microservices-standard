@@ -42,7 +42,8 @@ export tp_log_dir=$base_dir"/kdb-tick/data/tplogs" # Edit
 
 export mnt_dir="/data/db"           # Edit
 
-export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1`
+export host_ip=`/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1` # Use this if running locally
+# export host_ip=172.17.0.1 # Use this if running on AWS (default gateway for docker)
 
 export KXI_AUTH_DISABLED=1
 
