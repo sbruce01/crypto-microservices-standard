@@ -54,11 +54,11 @@ q tick.q $1 ${BASE_DIRECTORY}/kdb-tick/data/tplogs -p ${NODES_PORT} -env $1 > ${
 cd ../
 
 #Start the procs
-docker-compose -f 'docker-compose_'$1'_sm.yaml' up -d
-docker-compose -f 'docker-compose_'$1'_sg.yaml' up -d
-docker-compose -f 'docker-compose_'$1'_da.yaml' up -d
+docker compose -f 'docker-compose_'$1'_sm.yaml' up -d
+docker compose -f 'docker-compose_'$1'_sg.yaml' up -d
+docker compose -f 'docker-compose_'$1'_da.yaml' up -d
 
-docker-compose -f 'docker-compose_'$1'_sp.yaml' up -d
+docker compose -f 'docker-compose_'$1'_sp.yaml' up -d
 
 sleep 3
 
