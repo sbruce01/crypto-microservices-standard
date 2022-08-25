@@ -27,7 +27,6 @@ LOG_DIRECTORY=${BASE_DIRECTORY}/logs
 #fi
 
 echo -e 'Running source ./env...\n'
-source ./env.local
 source './env_'$1
 
 #Run prepEnv and source each time just in case it's the first run of the day or something has been changed
