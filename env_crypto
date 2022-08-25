@@ -38,6 +38,7 @@ export custom_dir="./custom"       # Edit
 
 export base_dir=`readlink -f $BASH_SOURCE | xargs dirname`
 export tp_dir=$base_dir"/kdb-tick/sym"
+export tp_log_dir=$base_dir"/kdb-tick/data/tplogs" # Edit
 
 export mnt_dir="/data/db"           # Edit
 
