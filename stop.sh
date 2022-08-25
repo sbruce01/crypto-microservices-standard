@@ -14,13 +14,13 @@ source './env_'$1
 
 
 echo 'Stopping SM...'
-docker-compose -f 'docker-compose_'$1'_sm.yaml' down --remove-orphans
+docker compose -f 'docker-compose_'$1'_sm.yaml' down --remove-orphans
 
 echo 'Stopping SG...'
-docker-compose -f 'docker-compose_'$1'_sg.yaml' down --remove-orphans
+docker compose -f 'docker-compose_'$1'_sg.yaml' down --remove-orphans
 
 echo 'Stopping DA...'
-docker-compose -f 'docker-compose_'$1'_da.yaml' down --remove-orphans
+docker compose -f 'docker-compose_'$1'_da.yaml' down --remove-orphans
 
 echo -e '\nChecking docker ps...\n '
 docker ps | grep $1
