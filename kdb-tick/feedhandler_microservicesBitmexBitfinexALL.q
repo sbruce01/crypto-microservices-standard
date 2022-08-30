@@ -25,19 +25,21 @@ BuySellDict:("Buy";"Sell")!(`bid;`ask);
 
 //create the ws subscription table
 hostsToConnect:([]hostQuery:();request:();exchange:`$();feed:`$();callbackFunc:`$());
-//add BITFINEX websockets
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://api-pub.bitfinex.com/ws/2";`event`channel`pair`prec!("subscribe";"book";"tETHUSD";"R0");`bitfinex;`order;`.bitfinex.order.upd);
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://api-pub.bitfinex.com/ws/2";`event`channel`pair`prec!("subscribe";"trades";"tETHUSD";"R0");`bitfinex;`trade;`.bitfinex.trade.upd);
-//add BitMEX order websockets 
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"orderBookL2_25:XBTUSD");`bitmex;`order;`.bitmex.upd);
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"orderBookL2_25:ETHUSD");`bitmex;`order;`.bitmex.upd);
+/ //add BITFINEX websockets
 
-//add BitMex trade websockets
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"trade:ETHUSD");`bitmex;`trade;`.bitmex.upd);
-`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"trade:XBTUSD");`bitmex;`trade;`.bitmex.upd);
+`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"trade");`bitmex;`trade;`.bitmex.upd);
+`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"orderBookL2_25");`bitmex;`order;`.bitmex.upd);
 
-///////////////////////////// Uncomment to increase the trade syms /////////////////////////////////
-/ `hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://ws.bitmex.com/realtime";`op`args!("subscribe";"trade");`bitmex;`trade;`.bitmex.upd);
+
+pairCurl:system "curl https://api-pub.bitfinex.com/v2/conf/pub:list:pair:exchange";
+system "sleep 2";
+pair:{"t",x}each raze .j.k raze pairCurl;
+
+
+{`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://api-pub.bitfinex.com/ws/2";`event`channel`pair`prec!("subscribe";"book";x;"R0");`bitfinex;`order;`.bitfinex.order.upd)}each pair;
+{`hostsToConnect upsert `hostQuery`request`exchange`feed`callbackFunc!("wss://api-pub.bitfinex.com/ws/2";`event`channel`pair`prec!("subscribe";"trades";x;"R0");`bitfinex;`trade;`.bitfinex.trade.upd)}each pair;
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //add record ID
@@ -150,6 +152,8 @@ hostsToConnect:update ws:1+til count i from hostsToConnect;
 
 //establish the ws connection
 establishWS:{
+    0N!x[`ws];
+    system "sleep 3";
     .debug.x:x;
     hostQuery:x[`hostQuery];
     request:x[`request];
@@ -170,6 +174,7 @@ establishWS:{
     };
 
 //connect to the websockets
+/ establishWS each hostsToConnect;
 @[establishWS;;0N!"Failed to subscribe"]each hostsToConnect;
 
 //open the websocket and check the connection status 
