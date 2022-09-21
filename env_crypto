@@ -5,20 +5,20 @@ export KDB_LICENSE_B64=$(base64 ~/.qp.licenses/k4.lic)  # Edit
 export q=${DOCKER_REG}/kdb-4.0:2021.12.07               # Edit
 export kx_licence_dir=~/.qp.licenses                    # Edit
 
-export sg_gw=${DOCKER_REG}/kxi-sg-gw:1.1.1 # was 1 behind
-export sg_rc=${DOCKER_REG}/kxi-sg-rc:1.1.2
-export sg_agg=${DOCKER_REG}/kxi-sg-agg:1.1.1
+export sg_gw=${DOCKER_REG}/kxi-sg-gw:1.2.0
+export sg_rc=${DOCKER_REG}/kxi-sg-rc:1.2.0
+export sg_agg=${DOCKER_REG}/kxi-sg-agg:1.2.0
 
-export sm=${DOCKER_REG}/kxi-sm:1.1.0
-export eoi=${DOCKER_REG}/kxi-sm-eoi:1.1.0
-export eod=${DOCKER_REG}/kxi-sm-eod:1.1.0
-export dbm=${DOCKER_REG}/kxi-sm-dbm:1.1.0
+export sm=${DOCKER_REG}/kxi-sm:1.2.0
+export eoi=${DOCKER_REG}/kxi-sm-eoi:1.2.0
+export eod=${DOCKER_REG}/kxi-sm-eod:1.2.0
+export dbm=${DOCKER_REG}/kxi-sm-dbm:1.2.0
 
-export sp_work=${DOCKER_REG}/kxi-sp-worker:1.1.3 # was 1 behind
-export sp_ctrl=${DOCKER_REG}/kxi-sp-controller:1.1.3 # was 1 behind 
-export sp_coord=${DOCKER_REG}/kxi-sp-coordinator:1.1.3 # was 1 behind
+export sp_work=${DOCKER_REG}/kxi-sp-worker:1.2.0 
+export sp_ctrl=${DOCKER_REG}/kxi-sp-controller:1.2.0 
+export sp_coord=${DOCKER_REG}/kxi-sp-coordinator:1.2.0 
 
-export da=${DOCKER_REG}/kxi-da:1.1.2
+export da=${DOCKER_REG}/kxi-da:1.2.0
 export tp=${DOCKER_REG}/rt_tick:integration-testing-5
 export sequencer=${DOCKER_REG}/kxi-rt-sequencer-simple:0.0.26
 export eureka=${DOCKER_REG}/kxi-eureka-discovery:1.0.0
